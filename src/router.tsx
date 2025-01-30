@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AppLayout from "./Layouts/AppLayout";
 import AuthLayout from "./Layouts/AuthLayout";
 import LoginUser from "./pages/auth/Login/LoginUser";
@@ -11,14 +11,17 @@ import ProviderPage from "./pages/ProviderPage";
 
 export default function Router() {
     return (
+
         <BrowserRouter>
             <Routes>
+                <Route path="/" element={<Navigate to="/auth/login/user" replace />} />
+                
                 <Route element={<AppLayout />}>
                     <Route path="/store" element={<StoreProducts />} />
                     <Route path="/provider" element={<ProviderPage />} />
                 </Route>
 
-                <Route path="/" element={<AuthLayout />} >
+                <Route element={<AuthLayout />} >
                     <Route path="auth/login/provider" element={<LoginProvider />} />
                     <Route path="auth/login/user" element={<LoginUser />} index />
                     <Route path="auth/register/provider" element={<SignUpProvider />} />

@@ -1,10 +1,11 @@
 import { useMemo } from "react";
 import { useAppStore } from "../store/useAppStore";
+import { Link } from "react-router-dom";
 
 export default function HeaderUser() {
-    
 
-    const {cart, decreseQuantity, increseQuantity, removeFromCart, clearCart} = useAppStore();
+
+    const { cart, decreseQuantity, increseQuantity, removeFromCart, clearCart } = useAppStore();
     const cartTotal = useMemo(() => cart.reduce((total, item) => total + (item.cantidad * item.prod_precio_unitario), 0), [cart])
     const isEmpty = useMemo(() => cart.length === 0, [cart])
     return (
@@ -70,13 +71,17 @@ export default function HeaderUser() {
                                         {!isEmpty && (
                                             <>
                                                 <button className="cart__button__total" onClick={clearCart}>Vaciar Carrito</button>
-                                                <button className="cart__button__total bt__buy " onClick={() => {}}>Comprar</button>
+                                                <button className="cart__button__total bt__buy " onClick={() => { }}>Comprar</button>
                                             </>
                                         )}
 
                                     </div>
                                 </div>
                             </div>
+
+                            <nav>
+                                <Link to={'/'} className="nav__a">Cerrar Sesion</Link>
+                            </nav>
 
                         </nav>
                     </div>

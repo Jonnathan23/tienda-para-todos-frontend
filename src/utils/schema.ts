@@ -1,4 +1,4 @@
-import { number, object, string } from "valibot";
+import { number, object, string, array } from "valibot";
 
 
 export const ClientesSchema = object({
@@ -48,3 +48,27 @@ export const Detalle_Ordenes_CliSchema = object({
     detalle_cantidad: number(),
     detalle_precio: number(),
 })
+
+
+export const ProductosVendidosSchema = object({
+    prod_id: number(),
+    prod_descripcion: string(),
+    prod_precio_unitario: number(),
+    detalle_cantidad: number(),
+})
+
+export const GetOrderRequestSchema = object({
+    prov_id: number(),
+    productos_vendidos: array(ProductosVendidosSchema),
+})
+
+
+export const OrderProductSchema = object({
+    prod_id: number(),
+    prod_stock: number()
+});
+
+export const OrderRequestSchema = object({
+    cli_cedula: string(),
+    productos: array(OrderProductSchema)
+});

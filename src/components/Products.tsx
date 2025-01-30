@@ -5,7 +5,7 @@ type ProductoProps = {
     producto: Producto
 }
 
-export default function Productos({ producto }: ProductoProps) {
+export default function Products({ producto }: ProductoProps) {
     const { addToCart } = useAppStore();
     return (
         <div className="productos-card">
